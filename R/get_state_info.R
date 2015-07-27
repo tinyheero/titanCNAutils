@@ -4,6 +4,7 @@
 #' @param symmetric Boolean flag to indicate whether "similar" states should be collapsed
 #' @author Gavin Ha 
 #' \url{https://github.com/gavinha/TitanCNA/blob/master/R/utils.R}
+#' @export
 decode_LOH <- function(G, symmetric = TRUE) {
   T <- length(G)
   Z <- rep("NA", T)
