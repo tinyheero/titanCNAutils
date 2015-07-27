@@ -4,7 +4,7 @@
 #' @param symmetric Boolean flag to indicate whether "similar" states should be collapsed
 #' @author Gavin Ha 
 #' \url{https://github.com/gavinha/TitanCNA/blob/master/R/utils.R}
-decodeLOH <- function(G, symmetric = TRUE) {
+decode_LOH <- function(G, symmetric = TRUE) {
   T <- length(G)
   Z <- rep("NA", T)
   CN <- rep(NA, T)
@@ -115,7 +115,7 @@ get_state_info <- function() {
     ) 
 
   titan.states <- as.numeric(as.character(my.list[["states"]]))
-  titan.states.decode <- decodeLOH(titan.states)
+  titan.states.decode <- decode_LOH(titan.states)
   titan.states.decode.df <- lapply(titan.states.decode, data.frame)
   titan.states.decode.df <- dplyr::bind_cols(titan.states.decode.df)
   colnames(titan.states.decode.df) <- c("stateName", "copyNum")
