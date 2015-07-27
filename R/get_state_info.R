@@ -125,7 +125,7 @@ get_state_info <- function() {
                               stateNameModified = paste(copyNum, "N_", stateName, sep = "")
                               )
 
-  my.list[["states.names"]] <- setNames(titan.states.decode.df[, "stateNameModified"], 0:24)
+  my.list[["states.names"]] <- setNames(titan.states.decode.df[["stateNameModified"]], 0:24)
 
   # this puts the states into overall copy number classes
   my.list[["states.names.summary"]] <- setNames(
