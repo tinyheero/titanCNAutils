@@ -2,3 +2,4 @@
 
 export(decode_LOH)
 export(get_state_info)
+export(melt_gene_call_mat)
