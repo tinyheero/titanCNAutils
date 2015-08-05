@@ -1,4 +1,9 @@
 #' Melts the Titan Gene Call Matrix into Tidy Format
+#' 
+#' This function melts the Titan gene call matrix into a tidy format. It also
+#' adds an additional column called stateSummary. This column represents the
+#' the states summarized into broad states as specified in the titan.state.info
+#' variable
 #'
 #' @param in.gene.call.matrix The gene call matrix
 #' @param titan.state.info Output from the get_state_info() function
