@@ -7,7 +7,8 @@
 get_overlap_seg_with_mask_ind(segs.df, cnv.mask.df, overlap.prop = 0.25)
 }
 \arguments{
-\item{segs.df}{Titan segments data.frame}
+\item{segs.df}{Titan segments in a data.frame. Must contain the columns:
+chr, start, end}
 
 \item{cnv.mask.df}{CNV mask in a data.frame. Must contain the columns: chr,
 start, end}
@@ -24,5 +25,13 @@ Given a TitanCNA segment data.frame and a CNV mask segment, this function
 will find whether any TitanCNA segment overlaps, with any significant degree
 according to the overlap.prop parameter, with a CNV mask segment. It returns
 the row number of any segment that does.
+}
+\examples{
+segs.df <- data.frame(chr = c("chr1", "chr2", "chr1", "chr3"),
+                      start = 1:4, end = 7:10,
+                      stringsAsFactors = FALSE)
+cnv.mask.df <- data.frame(chr = "chr1", start = 6, end = 8,
+                          stringsAsFactors = FALSE)
+get_overlap_seg_with_mask_ind(segs.df, cnv.mask.df)
 }
 
