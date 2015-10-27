@@ -1,10 +1,14 @@
 Package: titanCNAutils
 Title: An R package for working with TitanCNA Results
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Fong Chun", "Chan", , "fongchunchan@gmail.com", role = c("aut", "cre"))
 Description: This R package provides utility functions to work with TitanCNA results
 Depends: R (>= 3.1.2)
 License: MIT
 Imports:
-	dplyr (>= 0.4.1)
+	plyr (>= 1.8.3),
+	reshape2 (>= 1.4.1),
+	GenomicRanges (>= 1.18.4),
+	S4Vectors (>= 0.4.0),
+	IRanges (>= 2.0.1)
 LazyData: true
