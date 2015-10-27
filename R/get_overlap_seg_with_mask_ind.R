@@ -12,6 +12,7 @@
 #'   cnv mask segment in order to be considered overlapping
 #' @return Vector containing the row number in the segs.df that overlaps with 
 #'  any cnv.mask segment
+#' @export
 get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df, 
                                           overlap.prop = 0.25) {
 
