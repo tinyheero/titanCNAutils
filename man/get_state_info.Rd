@@ -7,8 +7,8 @@
 get_state_info()
 }
 \value{
-A list with names corresponding to various details "categories" of
-  state information
+A named list containing various details "categories" of state
+  information
 }
 \description{
 Returns information about the Titan states in a list structure

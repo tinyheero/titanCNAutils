@@ -85,24 +85,40 @@ decode_LOH <- function(G, symmetric = TRUE) {
 #'
 #' Returns information about the Titan states in a list structure
 #'
-#' @return A list with names corresponding to various details "categories" of
-#'   state information
+#' @return A named list containing various details "categories" of state 
+#'   information
 #' @export
 get_state_info <- function() {
 
   my.list <- list(
     "states" = factor(0:24),
     "states.del" = c(0,1),
-    "states.del.loh" = c(0:2), # counts deletion and the somatic 2N LOH state 
-    "states.neu" = c(3), # counts CN neutral state, but excludes the somatic 2N LOH state
-    "states.neu.loh" = c(2,3), # counts CN neutral states including the somatic 2N LOH state
-    "states.gain" = c(4:24), # counts all CN gain/amplified states
-    "states.somloh" = c(2,4,7,9,12,16,20), # counts all somatic LOH states
+
+    # counts deletion and the somatic 2N LOH state 
+    "states.del.loh" = c(0:2), 
+
+    # counts CN neutral state, but excludes the somatic 2N LOH state
+    "states.neu" = c(3), 
+
+    # counts CN neutral states including the somatic 2N LOH state
+    "states.neu.loh" = c(2,3),
+
+    # counts all CN gain/amplified states
+    "states.gain" = c(4:24),
+
+    # counts all somatic LOH states
+    "states.somloh" = c(2,4,7,9,12,16,20),
     "states.HOMD" = c(0), 
     "states.HETD" = c(1),
-    "states.cn.neu" = c(3), # counts CN neutral states that excludes the somatic 2N LOH state
-    "states.cn.neu.loh" = c(2), # counts somatic 2N LOH state 
-    "states.HLAMP" = c(9:24), # anything higher than 3N
+
+    # counts CN neutral states that excludes the somatic 2N LOH state
+    "states.cn.neu" = c(3), 
+
+    # counts somatic 2N LOH state 
+    "states.cn.neu.loh" = c(2), 
+
+    # anything higher than 3N
+    "states.HLAMP" = c(9:24),
     "states.cols.summary" = c("HOMD" = "#1F78B4", 
                               "HETD" = "#A6CEE3", 
                               "NEU" = "lightgrey",
@@ -113,29 +129,28 @@ get_state_info <- function() {
                               "7N" = "#9E1214", 
                               "8N" = "#590A0B",
                               "SOMLOH" = "#33A02C")
-    ) 
+  ) 
 
   titan.states <- as.numeric(as.character(my.list[["states"]]))
   titan.states.decode <- decode_LOH(titan.states)
   titan.states.decode.df <- lapply(titan.states.decode, data.frame)
   titan.states.decode.df <- dplyr::bind_cols(titan.states.decode.df)
   colnames(titan.states.decode.df) <- c("stateName", "copyNum")
-  titan.states.decode.df <- dplyr::mutate(
-                              titan.states.decode.df, 
-                              stateNameModified = paste(copyNum, "N_", stateName, sep = "")
-                              )
+  titan.states.decode.df <- 
+    dplyr::mutate(titan.states.decode.df, 
+                  stateNameModified = paste(copyNum, "N_", stateName, sep = ""))
 
-  my.list[["states.names"]] <- setNames(titan.states.decode.df[["stateNameModified"]], 0:24)
+  my.list[["states.names"]] <- 
+    setNames(titan.states.decode.df[["stateNameModified"]], 0:24)
 
-  # this puts the states into overall copy number classes
-  my.list[["states.names.summary"]] <- setNames(
-                                        c("HOMD", "HETD", "SOMLOH", 
-                                          "NEU", "SOMLOH", "3N", "SOMLOH", 
-                                          "4N", "4N", "SOMLOH", "5N", "5N", 
-                                          "SOMLOH", "6N", "6N", "6N", "SOMLOH", 
-                                          "7N", "7N", "7N", "SOMLOH", "8N", 
-                                          "8N", "8N", "8N" ), 0:24) 
+  # Puts the States into Overall Copy Number Classes
+  my.list[["states.names.summary"]] <- 
+    setNames(c("HOMD", "HETD", "SOMLOH", "NEU", "SOMLOH", "3N", "SOMLOH", 
+               "4N", "4N", "SOMLOH", "5N", "5N", "SOMLOH", "6N", "6N", "6N", 
+               "SOMLOH", "7N", "7N", "7N", "SOMLOH", "8N", "8N", "8N", "8N"), 
+             0:24) 
 
-  my.list[["copy.num"]] <- titan.states.decode.df[, "copyNum"]
+  my.list[["copy.num"]] <- 
+    setNames(titan.states.decode.df[["copyNum"]], 0:24)
   my.list
 }
