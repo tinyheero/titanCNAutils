@@ -35,7 +35,11 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
                                             start.field = "Start_Position",
                                             end.field = "End_Position")
 
-  cnv.mask.gr <- GenomicRanges::makeGRangesFromDataFrame(cnv.mask.df)
+  cnv.mask.gr <- 
+    GenomicRanges::makeGRangesFromDataFrame(cnv.mask.df,
+                                            seqnames.field = "chr", 
+                                            start.field = "start",
+                                            end.field = "end")
 
   # Find Overlaps
   overlap.res <- GenomicRanges::findOverlaps(segs.gr, cnv.mask.gr)

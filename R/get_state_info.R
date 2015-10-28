@@ -131,6 +131,38 @@ get_state_info <- function() {
                               "SOMLOH" = "#33A02C")
   ) 
 
+  # Used to assess the "importance" of TitanCNA states
+  titan.states.order <- 
+    c(-1, # outlier state (OUT)
+      3, # 2N copy neutral heterozygous (AB; HET; 2 CN)
+      2, # 2N copy neutral LOH (AA/AB; NLOH; 2 CN)
+      5, # 3N Allele specific gain (AAB/ABB; GAIN; 3 CN)
+      4, # 3N Gain LOH (AAA/BBB; ALOH; 3 CN)
+      8, # 4N balanced gain (AABB; BCNA; 4 CN)
+      7, # 4N allele specific gain (AAAB/ABBB; ASCNA; 4 CN)
+      6, # 4N amplified LOH (AAAA/BBBB; ALOH; 4 CN)
+      11, # 5N unbalanced amplification (AAABB/AABBB; UBCNA; 5 CN)
+      10, # 5N allele specific amplification (AAAAB/ABBBB; ASCNA; 5 CN)
+      9, # 5N amplified LOH (AAAAA/BBBBB; ALOH; 5 CN)
+      15, # 6N balanced amplification (AAABBB; BCNA; 6 CN)
+      14, # 6N unbalanced amplification (AAAABB/AABBBB; UBCNA; 6 CN)
+      13, # 6N allele specific amplification (AAAAAB/ABBBBB; ASCNA; 6 CN)
+      12, # 6N amplified LOH (AAAAAA/BBBBBB; ALOH; 6 CN)
+      18, # 7N unbalanced amplification (AAAAABB/AABBBBB; UBCNA; 7 CN)
+      19, # 7N unbalanced amplification (AAABBBB/AAAABBB; UBCNA; 7 CN)
+      17, # 7N allele specific amplifcation (AAAAAAB/ABBBBBB; ASCNA; 7 CN)
+      16, # 7N amplified LOH (AAAAAAA/BBBBBBB; ALOH; 7 CN)
+      24, # 8N balanced amplification (AAAABBBB; BCNA; 8 CN)
+      22, # 8N unbalanced amplification (AAAAAABB/AABBBBBB; UBCNA; 8 CN)
+      23, # 8N unbalanced amplification (AAAAABBB/AAABBBBB; UBCNA; 8 CN)
+      21, # 8N allele specific amplifcation (AAAAAAAB/ABBBBBBB; ASCNA; 8 CN)
+      20, # 8N amplified LOH (AAAAAAAA/BBBBBBBBB; ALOH; 8 CN)
+      1, # 1N heterozygous deletion (A/B; DLOH; 1 CN)
+      0 # 0N homozygous deletion (HOMD; 0 CN)
+		)
+
+  my.list[["titan.states.order"]] <- titan.states.order
+
   titan.states <- as.numeric(as.character(my.list[["states"]]))
   titan.states.decode <- decode_LOH(titan.states)
   titan.states.decode.df <- lapply(titan.states.decode, data.frame)
