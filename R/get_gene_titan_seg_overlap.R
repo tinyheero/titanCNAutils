@@ -29,8 +29,8 @@ get_gene_titan_seg_overlap <- function(titan.seg.df, gene.annot.df) {
     S4Vectors::mcols(titan.seg.gr[titan.seg.gr.hits, ])
 
   # Build output data.frame
-  overlap.df <- cbind(S4Vectors::mcols(gene.annot.gr.overlap), 
-                      titan.seg.gr.overlap.mcols)
+  overlap.df <- BiocGenerics::cbind(S4Vectors::mcols(gene.annot.gr.overlap), 
+                                    titan.seg.gr.overlap.mcols)
   overlap.df <- as.data.frame(overlap.df)
   overlap.df <- dplyr::as_data_frame(overlap.df)
 
