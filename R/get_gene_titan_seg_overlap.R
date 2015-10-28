@@ -1,15 +1,15 @@
 #' Get Gene Overlaps with TitanCNA segments
 #'
-#' @param titan.seg.gr GRanges object of the TitanCNA seg
-#' @param gene.annot.gr GRanges object of the genes 
+#' @param segs.df data.frame 
+#' @param gene.annot.df
 #' @return data.frame that contains the overlap of the input gene annotation
 #'  with the input segment data.
 #' @export
-get_gene_titan_seg_overlap <- function(titan.seg.df, gene.annot.df) {
+get_gene_titan_seg_overlap <- function(segs.df, gene.annot.df) {
 
   message("Creating GRanges")
   titan.seg.gr <- 
-    GenomicRanges::makeGRangesFromDataFrame(titan.seg.df, 
+    GenomicRanges::makeGRangesFromDataFrame(segs.df, 
                                             seqnames.field = "Chromosome", 
                                             start.field = "Start_Position",
                                             end.field = "End_Position", 

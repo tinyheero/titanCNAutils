@@ -5,8 +5,8 @@
 #' according to the overlap.prop parameter, with a CNV mask segment. It returns
 #' the row number of any segment that does.
 #'
-#' @param segs.df Titan segments in a data.frame. Must contain the columns:
-#'   chr, start, end
+#' @param segs.df TitanCNA segments in a data.frame. This should be the 
+#'  data.frame loaded from the load_titan_seg function
 #' @param cnv.mask.df CNV mask in a data.frame. Must contain the columns: chr,
 #'   start, end
 #' @param overlap.prop Proportion that the TitanCNA segment must overlap with
@@ -29,7 +29,12 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
   }
 
   # Build GRanges Objects
-  segs.gr <- GenomicRanges::makeGRangesFromDataFrame(segs.df)
+  segs.gr <- 
+    GenomicRanges::makeGRangesFromDataFrame(segs.df, 
+                                            seqnames.field = "Chromosome", 
+                                            start.field = "Start_Position",
+                                            end.field = "End_Position")
+
   cnv.mask.gr <- GenomicRanges::makeGRangesFromDataFrame(cnv.mask.df)
 
   # Find Overlaps

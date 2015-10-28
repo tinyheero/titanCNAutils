@@ -7,8 +7,8 @@
 get_overlap_seg_with_mask_ind(segs.df, cnv.mask.df, overlap.prop = 0.25)
 }
 \arguments{
-\item{segs.df}{Titan segments in a data.frame. Must contain the columns:
-chr, start, end}
+\item{segs.df}{TitanCNA segments in a data.frame. This should be the
+data.frame loaded from the load_titan_seg function}
 
 \item{cnv.mask.df}{CNV mask in a data.frame. Must contain the columns: chr,
 start, end}

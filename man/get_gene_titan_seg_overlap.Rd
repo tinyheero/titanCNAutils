@@ -4,12 +4,12 @@
 \alias{get_gene_titan_seg_overlap}
 \title{Get Gene Overlaps with TitanCNA segments}
 \usage{
-get_gene_titan_seg_overlap(titan.seg.df, gene.annot.df)
+get_gene_titan_seg_overlap(segs.df, gene.annot.df)
 }
 \arguments{
-\item{titan.seg.gr}{GRanges object of the TitanCNA seg}
+\item{segs.df}{data.frame}
 
-\item{gene.annot.gr}{GRanges object of the genes}
+\item{gene.annot.df}{}
 }
 \value{
 data.frame that contains the overlap of the input gene annotation
