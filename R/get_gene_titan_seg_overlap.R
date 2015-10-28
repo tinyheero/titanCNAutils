@@ -5,7 +5,7 @@
 #' @return data.frame that contains the overlap of the input gene annotation
 #'  with the input segment data.
 #' @export
-find_gene_titan_seg_overlap <- function(titan.seg.df, gene.annot.df) {
+get_gene_titan_seg_overlap <- function(titan.seg.df, gene.annot.df) {
 
   message("Creating GRanges")
   titan.seg.gr <- 
