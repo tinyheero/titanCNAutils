@@ -58,5 +58,5 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
   segs.overlap.cnv.mask.ind <- which(segs.cnv.overlap.prop > overlap.prop)
 
   # Map the indices to the original input data
-  gr.hit[segs.overlap.cnv.mask.ind]
+  unique(gr.hit[segs.overlap.cnv.mask.ind])
 }
