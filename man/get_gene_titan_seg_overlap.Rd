@@ -7,7 +7,8 @@
 get_gene_titan_seg_overlap(segs.df, gene.annot.df)
 }
 \arguments{
-\item{segs.df}{data.frame}
+\item{segs.df}{data.frame of the TitanCNA segs file loaded from
+\code{oad_titan_seg}}
 
 \item{gene.annot.df}{}
 }

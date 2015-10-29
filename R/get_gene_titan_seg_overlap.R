@@ -1,6 +1,7 @@
 #' Get Gene Overlaps with TitanCNA segments
 #'
-#' @param segs.df data.frame 
+#' @param segs.df data.frame of the TitanCNA segs file loaded from 
+#'  \code{oad_titan_seg}
 #' @param gene.annot.df
 #' @return data.frame that contains the overlap of the input gene annotation
 #'  with the input segment data.
