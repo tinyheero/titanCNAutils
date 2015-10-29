@@ -1,8 +1,17 @@
 # titanCNAutils
 
-An R package for working TitanCNA Results
+An R package for working TitanCNA Results.
 
-To install this package using devtools:
+As this is not part of Bioconductor yet, you will need to manually install some Bioconductor packages first:
+
+```{r}
+source("https://bioconductor.org/biocLite.R")
+biocLite("GenomicRanges")
+biocLite("S4Vectors")
+biocLite("IRanges")
+```
+
+Once these Bioconductor packages are installed, you can install this package using devtools:
 
 ```{r}
 devtools::install_github("tinyheero/titanCNAutils")
