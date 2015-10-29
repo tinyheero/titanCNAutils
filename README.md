@@ -1,6 +1,6 @@
 # titanCNAutils
 
-An R package for working TitanCNA Results.
+An R package for working [TitanCNA](https://github.com/gavinha/TitanCNA) Results.
 
 As this is not part of Bioconductor yet, you will need to manually install some Bioconductor packages first:
 
