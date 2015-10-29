@@ -42,6 +42,9 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
                                             end.field = "end")
 
   # Find Overlaps
+  # The nrows will be larger than the input data since a seg can overlap with 
+  # multiple cnv segs. But the values will be indices to the original input 
+  # data. This will be used later down the function.
   overlap.res <- GenomicRanges::findOverlaps(segs.gr, cnv.mask.gr)
   gr.hit <- S4Vectors::queryHits(overlap.res)
   subject.hit <- S4Vectors::subjectHits(overlap.res)
@@ -53,5 +56,7 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
     IRanges::width(segs.gr[gr.hit])
 
   segs.overlap.cnv.mask.ind <- which(segs.cnv.overlap.prop > overlap.prop)
-  segs.overlap.cnv.mask.ind
+
+  # Map the indices to the original input data
+  gr.hit[segs.overlap.cnv.mask.ind]
 }
