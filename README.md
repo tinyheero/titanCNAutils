@@ -1,6 +1,8 @@
 # titanCNAutils
 
-An R package for working [TitanCNA](https://github.com/gavinha/TitanCNA) Results.
+An R package for working [TitanCNA](https://github.com/gavinha/TitanCNA) Results:
+
+[Ha, G., Roth, A., Khattra, J., Ho, J., Yap, D., Prentice, L. M., et al. (2014). TITAN: inference of copy number architectures in clonal cell populations from tumor whole-genome sequence data. Genome Res, 24(11), 1881–1893. http://doi.org/10.1101/gr.180281.114](http://www.ncbi.nlm.nih.gov/pubmed/25060187)
 
 As this is not part of Bioconductor yet, you will need to manually install some Bioconductor packages first:
 
