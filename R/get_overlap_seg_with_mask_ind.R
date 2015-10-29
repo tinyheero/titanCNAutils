@@ -55,7 +55,7 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
                                        cnv.mask.gr[subject.hit])) / 
     IRanges::width(segs.gr[gr.hit])
 
-  segs.overlap.cnv.mask.ind <- which(segs.cnv.overlap.prop > overlap.prop)
+  segs.overlap.cnv.mask.ind <- which(segs.cnv.overlap.prop >= overlap.prop)
 
   # Map the indices to the original input data
   unique(gr.hit[segs.overlap.cnv.mask.ind])

@@ -4,13 +4,17 @@
 \alias{get_gene_titan_seg_overlap}
 \title{Get Gene Overlaps with TitanCNA segments}
 \usage{
-get_gene_titan_seg_overlap(segs.df, gene.annot.df)
+get_gene_titan_seg_overlap(segs.df, gene.annot.df, overlap.prop = 0.5)
 }
 \arguments{
 \item{segs.df}{data.frame of the TitanCNA segs file loaded from
-\code{oad_titan_seg}}
+\code{load_titan_seg}}
 
-\item{gene.annot.df}{}
+\item{gene.annot.df}{data.frame of the gene annotations}
+
+\item{overlap.prop}{Proportion that the TitanCNA segment must overlap with
+a gene in order to be considered overlapping. The smaller the value the
+more focal the copy number alteration you want to associate with gene}
 }
 \value{
 data.frame that contains the overlap of the input gene annotation
