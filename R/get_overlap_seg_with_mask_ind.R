@@ -1,13 +1,15 @@
 #' Find Overlapping Segments with a CNV Mask
 #'
-#' Given a TitanCNA segment data.frame and a CNV mask segment, this function
-#' will find whether any TitanCNA segment overlaps, with any significant degree
-#' according to the overlap.prop parameter, with a CNV mask segment. It returns
-#' the row number of any segment that does.
+#' Given a TitanCNA segment data.frame and a mask segment data.frame, this 
+#' function will find whether any TitanCNA segment overlaps, with any 
+#' significant degree according to the overlap.prop parameter, with a CNV mask 
+#' segment. It returns the row number of any segment that does.
 #'
-#' @param segs.df TitanCNA segments in a data.frame. This should be the 
-#'  data.frame loaded from the load_titan_seg function
-#' @param cnv.mask.df CNV mask in a data.frame. Must contain the columns: chr,
+#' @param segs.df TitanCNA segments in a data.frame. This can be the 
+#'   data.frame loaded from the \code{load_titan_seg} function. Or at the very
+#'   least the data.frame should contain the columns: Chromosome, 
+#'   Start_Position, End_Position
+#' @param mask.df Mask segment in a data.frame. Must contain the columns: chr,
 #'   start, end
 #' @param overlap.prop Proportion that the TitanCNA segment must overlap with
 #'   cnv mask segment in order to be considered overlapping
@@ -18,10 +20,10 @@
 #' segs.df <- data.frame(chr = c("chr1", "chr2", "chr1", "chr3"),
 #'                       start = 1:4, end = 7:10, 
 #'                       stringsAsFactors = FALSE)
-#' cnv.mask.df <- data.frame(chr = "chr1", start = 6, end = 8,
+#' mask.df <- data.frame(chr = "chr1", start = 6, end = 8,
 #'                           stringsAsFactors = FALSE)
-#' get_overlap_seg_with_mask_ind(segs.df, cnv.mask.df)
-get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df, 
+#' get_overlap_seg_with_mask_ind(segs.df, mask.df)
+get_overlap_seg_with_mask_ind <- function(segs.df, mask.df, 
                                           overlap.prop = 0.25) {
 
   if (overlap.prop > 1) {
@@ -36,7 +38,7 @@ get_overlap_seg_with_mask_ind <- function(segs.df, cnv.mask.df,
                                             end.field = "End_Position")
 
   cnv.mask.gr <- 
-    GenomicRanges::makeGRangesFromDataFrame(cnv.mask.df,
+    GenomicRanges::makeGRangesFromDataFrame(mask.df,
                                             seqnames.field = "chr", 
                                             start.field = "start",
                                             end.field = "end")
